@@ -5,3 +5,5 @@ bin/
 *.o
 *.kate-swp
 build_*/
+lib/
+Testing/

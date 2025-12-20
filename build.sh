@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # "Ninja" / "ninja"
 
 BUILD_TYPE="Ninja"
@@ -15,5 +13,15 @@ cmake -G "${BUILD_TYPE}" "../${SOURCE_FOLDER}"
 cmake --build .
 
 mkdir -p bubble_sort
-cp "../${SOURCE_FOLDER}/bubble_sort/run_bubble_sort.sh" ./bubble_sort
-cp "../${SOURCE_FOLDER}/multilevel_menu/run_multilevel_menu.sh" ./multilevel_menu
+
+arr_files[0]="run_bubble_sort.sh"
+arr_files[1]="run_multilevel_menu.sh"
+
+arr_folders[0]="bubble_sort"
+arr_folders[1]="multilevel_menu"
+
+for i in {0,1}; do
+    cp "../$SOURCE_FOLDER/${arr_folders[i]}/${arr_files[i]}" "./${arr_folders[i]}"
+done
+
+cp "../run_tests.sh" .
