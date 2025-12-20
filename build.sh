@@ -16,3 +16,4 @@ cmake --build .
 
 mkdir -p bubble_sort
 cp "../${SOURCE_FOLDER}/bubble_sort/run_bubble_sort.sh" ./bubble_sort
+cp "../${SOURCE_FOLDER}/multilevel_menu/run_multilevel_menu.sh" ./multilevel_menu
