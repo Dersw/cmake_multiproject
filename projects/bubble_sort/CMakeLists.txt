@@ -1,6 +1,5 @@
 project(bubble_sort)
 
-add_library(bubble_sort_lib "")
+add_executable(${PROJECT_NAME} main.cpp)
 
-add_subdirectory(src)
-add_subdirectory(test)
+add_subdirectory(sortings)

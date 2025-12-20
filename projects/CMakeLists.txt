@@ -6,6 +6,7 @@ enable_testing()
 add_subdirectory(lib/googletest)
 
 add_subdirectory(bubble_sort)
+add_subdirectory(bubble_sort_test)
 add_subdirectory(multilevel_menu)
 
 set(CMAKE_SUPPRESS_REGENERATION true)
