@@ -1,6 +1,5 @@
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
-#include <algorithm>  // для std::equal
 
 #include "io.hpp"
 #include "sortings.hpp"
