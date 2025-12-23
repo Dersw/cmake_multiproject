@@ -1,6 +1,10 @@
 project(bubble_sort_test)
 
-add_library(bubble_sort_lib "")
+set (LIB
+    bubble_sort_lib
+)
+
+add_library(${LIB} "")
 
 add_subdirectory(src)
 add_subdirectory(test)
