@@ -28,12 +28,12 @@ LongNumber::LongNumber(const char* const str) {
 	this->length = get_length(str);
 
 	if (str[0] == '+' or str[0] == '-') {
-		this->numbers = new int[length];
+		this->numbers = new int[this->length];
 		for (int i = 0; i < this->length; i++) {
 			this->numbers[i] = str[i + 1] - '0';
 		}
 	} else {
-		this->numbers = new int[length];
+		this->numbers = new int[this->length];
 		for (int i = 0; i < this->length; i++) {
 			this->numbers[i] = str[i] - '0';
 		}
