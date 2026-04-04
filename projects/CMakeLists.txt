@@ -9,5 +9,7 @@ add_subdirectory(bubble_sort)
 add_subdirectory(bubble_sort_test)
 add_subdirectory(multilevel_menu)
 add_subdirectory(long_numbers)
+add_subdirectory(double_linked_list)
+add_subdirectory(vector)
 
 set(CMAKE_SUPPRESS_REGENERATION true)
