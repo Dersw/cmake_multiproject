@@ -36,26 +36,43 @@ std::size_t Vector<T>::get_size() const noexcept {
 
 template<typename T>
 bool Vector<T>::has_item(const T& value) const noexcept {
-	for(std::size_t iter = 0; iter < size; iter++) {
-		if(arr[iter] == value) 
+	for (std::size_t iter = 0; iter < size; iter++) {
+		if (arr[iter] == value) {
 			return true;
+		}
 	}
 	return false;
 }
 
 template<typename T>
 bool Vector<T>::insert(const std::size_t position, const T& value) {
-	if(position > size)
+	if (position > size) {
 		return false;
+	}
 
-	if(capacity <= size + 1) 
-		realloc_mem(capacity * 2);
+	std::size_t new_size = size + 1;
 
-	for(std::size_t shift = size - 1; shift > position; shift--)
-		arr[shift + 1] = arr[shift]; 
-	arr[position] = value;
+	if (new_size > capacity) {
+		T *new_arr = new T[new_size];
+		for (std::size_t shift = size - 1; shift > position; shift--) {
+			arr[shift + 1] = arr[shift];
+
+		delete[] arr;
+		arr = new_arr;
+		capacity = new_size;
+
+		}
+	}
+	else {
+		for (std::size_t shift = size - 1; shift > position; shift--) {
+			arr[shift + 1] = arr[shift];
+		}
+	}
+
 	size++;
+	arr[position] = value;
 	return true;
+
 }
 
 template<typename T>
@@ -68,8 +85,9 @@ void Vector<T>::print() const noexcept {
 
 template<typename T>
 void Vector<T>::push_back(const T& value) {
-	if(size + 1 > capacity)
+	if (size + 1 > capacity) {
 		realloc_mem(capacity * 2);
+	}
 
 	arr[size] = value;
 	size++;
@@ -77,13 +95,14 @@ void Vector<T>::push_back(const T& value) {
 
 template<typename T>
 bool Vector<T>::remove_first_occurance(const T& value) {
-	for(std::size_t iter = 0; iter < size; iter++) {
-		if(arr[iter] == value) {
-			for(std::size_t shift = iter; shift < size - 1; shift++ )
+	for (std::size_t iter = 0; iter < size; iter++) {
+		if (arr[iter] == value) {
+			for (std::size_t shift = iter; shift < size - 1; shift++)
 				arr[shift] = arr[shift + 1];
 			size--;
-			if(size < capacity / 2)
+			if (size < capacity / 2) {
 				realloc_mem(capacity / 2);
+			}
 			return true;
 		} 
 	}
@@ -94,8 +113,9 @@ bool Vector<T>::remove_first_occurance(const T& value) {
 template<typename T>
 void Vector<T>::realloc_mem(const std::size_t new_capacity) {
 	T *new_arr = new T[new_capacity];
-	for(std::size_t i = 0; i < size; i++)
+	for (std::size_t i = 0; i < size; i++) {
 		new_arr[i] = arr[i];
+	}
 	delete[] arr;
 	arr = new_arr;
 	capacity = new_capacity;
