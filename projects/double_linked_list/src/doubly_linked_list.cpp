@@ -18,7 +18,7 @@ template<typename T>
 std::size_t DoublyLinkedList<T>::get_size() const noexcept {
 	std::size_t length = 0;
 	Node* current = begin;
-	while (current){
+	while (current) {
 		++length;
 		current = current->next;
 	}
@@ -27,8 +27,8 @@ std::size_t DoublyLinkedList<T>::get_size() const noexcept {
 
 template<typename T>
 bool DoublyLinkedList<T>::has_item(const T& value) const noexcept {
-	for(Node* current = begin; current; current = current->next){
-		if(current->value == value){
+	for (Node* current = begin; current; current = current->next) {
+		if (current->value == value) {
 			return true;
 		}
 	}
@@ -38,9 +38,9 @@ bool DoublyLinkedList<T>::has_item(const T& value) const noexcept {
 template<typename T>
 void DoublyLinkedList<T>::print() const noexcept {
 	Node* current = begin;
-	while (current){
+	while (current) {
 		std::cout << current->value;
-		if (current->next){
+		if (current->next) {
 			std::cout << ", ";
 		}
 		current = current->next;
@@ -51,11 +51,11 @@ void DoublyLinkedList<T>::print() const noexcept {
 template<typename T>
 void DoublyLinkedList<T>::push_back(const T& value) {
 	Node* new_node = new Node(value);
-	if (end == nullptr){
+	if (end == nullptr) {
 		begin = new_node;
 		end = new_node;
 	}
-	else{
+	else {
 		end->next = new_node;
 		new_node->prev = end;
 		end = new_node;
@@ -65,26 +65,30 @@ void DoublyLinkedList<T>::push_back(const T& value) {
 
 template<typename T>
 bool DoublyLinkedList<T>::remove_first(const T& value) noexcept {
-	if (!begin) return false;
+	if (!begin) {
+		return false;
+	}
 	
 	Node* cur = begin;
-	while(cur && cur->value != value){
+	while (cur && cur->value != value) {
 		cur = cur->next;
 	}
 	
-	if(!cur) return false;
+	if (!cur) {
+		return false;
+	}
 	
-	if(cur->prev){
+	if (cur->prev) {
 		cur->prev->next = cur->next;
 	}
-	else{
+	else {
 		begin = cur-> next;
 	}
 	
-	if(cur->next){
+	if (cur->next) {
 		cur->next->prev = cur->prev;
 	}
-	else{
+	else {
 		end = cur->prev;
 	}
 	
